@@ -8,7 +8,7 @@ A Registered Block Producer is a network node that helps process and validate tr
     1. Cardano Node - v9.0.0
         1. Ogmios - v6.5.0
         2. Kupo - @TODO v9.0.0 compatible version?
-        3. cardano-db-sync - 13.3.0.0(postgreSQL - 15.3)
+        3. cardano-db-sync - v13.3.0.0(postgreSQL - v15.3)
     2. Download the Partner Chain node - v1.0
 3. Run Wizard to generate Aura, Grandpa and Sidechain keys
 4. Get chain parameters from the Governance Authority(Chain Builder)
@@ -25,7 +25,7 @@ Once you have the Cardano SPO keys you are ready to continue with this guide.
 
 ### 2. Install Partner Chains dependencies
 
-To run the Partner Chains stack, several dependencies need to be installed on the cardano-node.
+To run the Partner Chains stack, several dependencies need to be installed on the `cardano-node`.
 
 Ogmios, Kupo and db-sync are essential to enable registration communication with the main chain (Cardano).
 
@@ -73,7 +73,7 @@ sudo systemctl start ogmios.service
 
 4. Observe logs
 
-```bash
+```
 journalctl -fu ogmios.service
 ```
 
