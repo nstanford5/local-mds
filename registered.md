@@ -35,6 +35,8 @@ Kupo is a fast, lightweight and configurable chain-index for Cardano.
 
 ### 2.1 Cardano node dependencies
 
+**_NOTE:_** Be mindful of file paths in the instruction sets below. Your `cardano-node` may have slightly different paths for certain files. Replace file paths below with the paths relevant to your node.
+
 ### 2.1.1 Ogmios - v6.5.0
 
 It is recommend to install [Ogmios](https://github.com/CardanoSolutions/ogmios) via pre-built binaries.
@@ -56,8 +58,8 @@ User=ubuntu
 Type=simple
 ExecStart=/usr/local/bin/ogmios \
   --host=0.0.0.0 \
-  --node-config=/home/ubuntu/mainnet/configs/config.json \
-  --node-socket=/home/ubuntu/mainnet/node.socket
+  --node-config=/home/ubuntu/testnet/configs/config.json \
+  --node-socket=/home/ubuntu/testnet/node.socket
 Restart=on-failure
 
 [Install]
@@ -95,8 +97,8 @@ User=ubuntu
 Type=simple
 Environment="HOME=/home/ubuntu"
 ExecStart=/usr/local/bin/kupo \
-  --node-socket $HOME/mainnet/node.socket \
-  --node-config $HOME/mainnet/configs/config.json \
+  --node-socket $HOME/testnet/node.socket \
+  --node-config $HOME/testnet/configs/config.json \
   --since origin \
   --defer-db-indexes \
   --match "*" \
@@ -134,7 +136,7 @@ ALTER ROLE ubuntu WITH CREATEDB;
 CREATE DATABASE cexplorer;
 # Verify db is created with \l. If anytime a command doesn't work restart postgres service.
 # This check should return empty. It will be filled with db sync relations.
-PGPASSFILE=~/cardano-db-sync/config/pgpass-mainnet ./postgresql-setup.sh --check
+PGPASSFILE=~/cardano-db-sync/config/pgpass-preview ./postgresql-setup.sh --check
 ```
 3. Run db sync as a service
 
@@ -145,8 +147,8 @@ Description=Cardano DB Sync Service
 After=network.target
 
 [Service]
-Environment=PGPASSFILE=/home/ubuntu/cardano-db-sync/config/pgpass-mainnet
-ExecStart=/usr/local/bin/cardano-db-sync --config /home/ubuntu/mainnet/configs/db-sync-config.json --socket-path /home/ubuntu/mainnet/node.socket --state-dir /home/ubuntu/mainnet/db-sync/ledger-state --schema-dir /home/ubuntu/cardano-db-sync/schema/
+Environment=PGPASSFILE=/home/ubuntu/cardano-db-sync/config/pgpass-preview
+ExecStart=/usr/local/bin/cardano-db-sync --config /home/ubuntu/testnet/configs/db-sync-config.json --socket-path /home/ubuntu/testnet/node.socket --state-dir /home/ubuntu/testnet/db-sync/ledger-state --schema-dir /home/ubuntu/cardano-db-sync/schema/
 User=ubuntu
 Restart=on-failure
 
