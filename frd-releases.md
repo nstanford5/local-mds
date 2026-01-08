@@ -1,9 +1,9 @@
 # FRD || Software Releases
-Responsible: Karmel Elshinnawi Nick Stanford
-Accountable: Nick Stanford
-Consulted: Lauren Lee Idris Olubisi
-Informed: Mike Ward
-Parent Document: DevX: The Midnight Standard
+Responsible: Karmel Elshinnawi Nick Stanford  
+Accountable: Nick Stanford  
+Consulted: Lauren Lee Idris Olubisi  
+Informed: Mike Ward  
+Parent Document: DevX: The Midnight Standard  
 
 ## Summary
 Software releases are a necessary component of the DApp Development Lifecycle. In order to build and maintain working DApps, DApp builders will need to be aware of software releases and their implications to new and existing code bases. 
